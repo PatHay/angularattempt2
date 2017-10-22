@@ -1,0 +1,13 @@
+<h1>Q&A</h1>
+
+<form (submit)="onSubmit()" id="form1" #myForm='ngForm'>
+    <div class="form-group">
+      <label>Your Name:</label>
+      <input
+      type="text" 
+      name="name" 
+      required
+      [(ngModel)]="user">
+      <button type="submit" value="submit">Login</button>
+    </div>
+</form>

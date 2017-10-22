@@ -1,0 +1,26 @@
+<h3><a [routerLink]="['/questions']">Home</a></h3>
+<h3><a [routerLink]="['']">Logout</a></h3>
+<h1>New Question</h1>
+
+
+<form #myForm='ngForm' (submit)="onSubmit()">
+    <label for="question">Question: </label>
+    <input 
+    type="text" 
+    name="question" 
+    [(ngModel)]="newQuestion.text" 
+    required 
+    minlength="10" 
+    #question="ngModel">
+    <div *ngIf="!question.valid && !question.pristine">Question not valid!  Cannot be blank and must be at least 10 characters long!</div>
+
+
+    <label for="desc">Description (optional): </label>
+    <input 
+    type="text" 
+    name="desc" 
+    [(ngModel)]="newQuestion.desc"
+    #desc="ngModel">
+    <button type="submit" value="submit" [hidden]="!myForm.valid">Submit</button><br>
+    <button [routerLink]="['/questions']">Cancel</button>
+  </form>

@@ -1,0 +1,29 @@
+<h3><a [routerLink]="['/questions']">Home</a></h3> | 
+<h3><a [routerLink]="['/question',question._id]">Go Back to Question</a></h3>
+<h3><a [routerLink]="['']">Logout</a></h3>
+<h1>{{ question.question }}?</h1>
+<h4 *ngIf="question.desc">{{ question.desc }}?</h4>
+
+
+
+<form #myForm='ngForm' (submit)="onSubmit()">
+    <label for="answer">Your Answer: </label>
+    <input 
+    type="text" 
+    name="answer" 
+    [(ngModel)]="answer.answer" 
+    required 
+    minlength="5" 
+    #answer="ngModel">
+    <div *ngIf="!answer.valid && !answer.pristine">Answer not valid!  Cannot be blank and must be at least 5 characters long!</div>
+
+
+    <label for="desc">Supporting details for your answer (optional): </label>
+    <input 
+    type="text" 
+    name="desc" 
+    [(ngModel)]="answer.desc"
+    #desc="ngModel">
+    <button type="submit" value="submit" [hidden]="!myForm.valid">Submit</button><br>
+    <button [routerLink]="['/questions']">Cancel</button>
+  </form>
